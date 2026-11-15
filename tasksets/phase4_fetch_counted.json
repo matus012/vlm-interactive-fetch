@@ -1,0 +1,247 @@
+{
+ "name": "phase4_fetch_counted",
+ "rule": "sim.sampler.draw_set('fetch', 10, 9000, stop=9200, min_surface=2)",
+ "draw_rule": "task 005 balanced sampler (sim/sampler.py; deviation 13: room uniform, support natural share + min_surface, surface uniform; out of sight < 10 px; deviation 15: pre-grasp check at draw)",
+ "code_commit": "f769a6ea8853b711ced22b2f0caca0f1c60c4222",
+ "renderer": "NVIDIA (laptop RTX 4060, EGL)",
+ "sha256_core": "4a07b7bff33ce39c39142645c2d76623b043024f5a5c57221f124cddea031a4c",
+ "hash_of": "sha256 of json.dumps([{task_id, seed, instruction, targets}], sort_keys=True, separators=(',',':'))",
+ "table": {
+  "room": {
+   "bedroom": 3,
+   "kitchen": 3,
+   "living_room": 2,
+   "storage": 2
+  },
+  "support": {
+   "floor": 8,
+   "nightstand": 2
+  },
+  "surface": {
+   "kitchen table": 5,
+   "storage bench": 5
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "fetch-9002",
+   "type": "fetch",
+   "seed": 9002,
+   "blocker": "none",
+   "instruction": "Bring the red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "fetch-9005",
+   "type": "fetch",
+   "seed": 9005,
+   "blocker": "none",
+   "instruction": "Bring the green box to the storage bench.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "green box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "fetch-9003",
+   "type": "fetch",
+   "seed": 9003,
+   "blocker": "none",
+   "instruction": "Bring the blue box to the storage bench.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "blue box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "fetch-9000",
+   "type": "fetch",
+   "seed": 9000,
+   "blocker": "none",
+   "instruction": "Bring the yellow box to the kitchen table.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "fetch-9006",
+   "type": "fetch",
+   "seed": 9006,
+   "blocker": "none",
+   "instruction": "Bring the blue box to the kitchen table.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "blue box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "nightstand",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "fetch-9008",
+   "type": "fetch",
+   "seed": 9008,
+   "blocker": "none",
+   "instruction": "Bring the yellow box to the kitchen table.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "fetch-9004",
+   "type": "fetch",
+   "seed": 9004,
+   "blocker": "none",
+   "instruction": "Bring the yellow box to the storage bench.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "fetch-9007",
+   "type": "fetch",
+   "seed": 9007,
+   "blocker": "none",
+   "instruction": "Bring the red box to the storage bench.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "nightstand",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "fetch-9001",
+   "type": "fetch",
+   "seed": 9001,
+   "blocker": "none",
+   "instruction": "Bring the yellow box to the storage bench.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "fetch-9009",
+   "type": "fetch",
+   "seed": 9009,
+   "blocker": "none",
+   "instruction": "Bring the red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 3
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  }
+ ]
+}

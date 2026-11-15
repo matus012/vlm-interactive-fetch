@@ -1,0 +1,467 @@
+{
+ "name": "phase4_push_or_detour_tuning",
+ "rule": "sim.sampler.draw_set('push_or_detour', 20, 8400, stop=8600, min_surface=0)",
+ "draw_rule": "task 005 balanced sampler (sim/sampler.py; deviation 13: room uniform, support natural share + min_surface, surface uniform; out of sight < 10 px; deviation 15: pre-grasp check at draw)",
+ "code_commit": "f769a6ea8853b711ced22b2f0caca0f1c60c4222",
+ "renderer": "NVIDIA (laptop RTX 4060, EGL)",
+ "sha256_core": "4827a27a8cb54c9d6a81818000815d7be1c691a20119e0719dd26c8b8906f659",
+ "hash_of": "sha256 of json.dumps([{task_id, seed, instruction, targets}], sort_keys=True, separators=(',',':'))",
+ "table": {
+  "room": {
+   "bedroom": 5,
+   "kitchen": 5,
+   "living_room": 5,
+   "storage": 5
+  },
+  "support": {
+   "floor": 19,
+   "nightstand": 1
+  },
+  "surface": {
+   "kitchen table": 15,
+   "storage bench": 5
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "push_or_detour-8409",
+   "type": "push_or_detour",
+   "seed": 8409,
+   "blocker": "cabinet",
+   "instruction": "Bring the blue box to the kitchen table.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "blue box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8413",
+   "type": "push_or_detour",
+   "seed": 8413,
+   "blocker": "cabinet",
+   "instruction": "Bring the green box to the kitchen table.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "green box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8401",
+   "type": "push_or_detour",
+   "seed": 8401,
+   "blocker": "cabinet",
+   "instruction": "Bring the green box to the storage bench.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "green box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8406",
+   "type": "push_or_detour",
+   "seed": 8406,
+   "blocker": "cabinet",
+   "instruction": "Bring the red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8411",
+   "type": "push_or_detour",
+   "seed": 8411,
+   "blocker": "cabinet",
+   "instruction": "Bring the yellow box to the kitchen table.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8414",
+   "type": "push_or_detour",
+   "seed": 8414,
+   "blocker": "cabinet",
+   "instruction": "Bring the red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8425",
+   "type": "push_or_detour",
+   "seed": 8425,
+   "blocker": "cabinet",
+   "instruction": "Bring the red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 7
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8426",
+   "type": "push_or_detour",
+   "seed": 8426,
+   "blocker": "cabinet",
+   "instruction": "Bring the red box to the storage bench.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8412",
+   "type": "push_or_detour",
+   "seed": 8412,
+   "blocker": "cabinet",
+   "instruction": "Bring the red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "nightstand",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8430",
+   "type": "push_or_detour",
+   "seed": 8430,
+   "blocker": "cabinet",
+   "instruction": "Bring the yellow box to the kitchen table.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8423",
+   "type": "push_or_detour",
+   "seed": 8423,
+   "blocker": "cabinet",
+   "instruction": "Bring the red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 3
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8436",
+   "type": "push_or_detour",
+   "seed": 8436,
+   "blocker": "cabinet",
+   "instruction": "Bring the yellow box to the storage bench.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8424",
+   "type": "push_or_detour",
+   "seed": 8424,
+   "blocker": "cabinet",
+   "instruction": "Bring the green box to the kitchen table.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "green box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8415",
+   "type": "push_or_detour",
+   "seed": 8415,
+   "blocker": "cabinet",
+   "instruction": "Bring the red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 6
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8432",
+   "type": "push_or_detour",
+   "seed": 8432,
+   "blocker": "cabinet",
+   "instruction": "Bring the yellow box to the kitchen table.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8441",
+   "type": "push_or_detour",
+   "seed": 8441,
+   "blocker": "cabinet",
+   "instruction": "Bring the green box to the storage bench.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "green box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8433",
+   "type": "push_or_detour",
+   "seed": 8433,
+   "blocker": "cabinet",
+   "instruction": "Bring the green box to the kitchen table.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "green box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8443",
+   "type": "push_or_detour",
+   "seed": 8443,
+   "blocker": "cabinet",
+   "instruction": "Bring the blue box to the storage bench.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "blue box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8429",
+   "type": "push_or_detour",
+   "seed": 8429,
+   "blocker": "cabinet",
+   "instruction": "Bring the blue box to the kitchen table.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "blue box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "push_or_detour-8434",
+   "type": "push_or_detour",
+   "seed": 8434,
+   "blocker": "cabinet",
+   "instruction": "Bring the green box to the kitchen table.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "green box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  }
+ ]
+}

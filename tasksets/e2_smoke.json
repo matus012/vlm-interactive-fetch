@@ -1,0 +1,59 @@
+{
+ "note": "task 011 step 2: house B VLM smoke (plumbing only), dev seeds from 5000, NAV116_HOUSE=B",
+ "tasks": [
+  {
+   "task_id": "fetch-5000",
+   "type": "fetch",
+   "seed": 5000,
+   "blocker": "none",
+   "instruction": "Bring the blue box to the kitchen table.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "blue box": 0
+   },
+   "house": "B"
+  },
+  {
+   "task_id": "blocked-5000",
+   "type": "blocked",
+   "seed": 5000,
+   "blocker": "crate",
+   "instruction": "Bring the blue box to the storage bench.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "blue box": 0
+   },
+   "house": "B"
+  },
+  {
+   "task_id": "push_or_detour-5001",
+   "type": "push_or_detour",
+   "seed": 5001,
+   "blocker": "cabinet",
+   "instruction": "Bring the red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 20,
+   "hall_px": {
+    "red box": 0
+   },
+   "house": "B"
+  }
+ ]
+}

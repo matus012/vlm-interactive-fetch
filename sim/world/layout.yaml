@@ -1,0 +1,78 @@
+# 116 house, Phase 1 (task 002). Single source of truth for sim/world/generate.py (MJCF + labels) and
+# sim/world/occupancy.py (known map). World frame: metres / radians, floor top at z = 0, x east, y north.
+#
+#   y 7.0 +-----------+-----------+-----------+
+#         |  BEDROOM  |   HALL    |  STORAGE  |
+#         |  bed  ns  d_bed  S  d_sto   bench |
+#   y 3.5 +-----------+--d_liv----+-----------+
+#         |  LIVING ROOM    |     KITCHEN     |
+#         | sofa  coffee  d_lk1      counter  |
+#         |               d_lk2      table    |
+#   y 0.0 +-----------------+-----------------+
+#        x 0        3      4.5     6          9
+#
+# Doorways 1.0 m. Hall -> bedroom, storage, living room (one door each). Living room <-> kitchen: TWO doors (d_lk1,
+# d_lk2): the detour route. The kitchen is reachable only through the living room. Bedroom and storage have one door
+# each: a crate there blocks the only route. The cabinet goes into one of the two living/kitchen doors.
+# Spawn regions: floor (and low surfaces) where a fetch box may be put by seed. Rules, fixed before any gate ran
+# (2026-11-13, L2): >= 0.35 m from walls (the gripper must reach it), >= 0.30 m from furniture footprints, outside
+# each doorway's corridor (door width + 0.3 m, 0.8 m deep each side; contains R4a's door +- 0.6 m), >= 0.80 m from every
+# room point and (R4a, task 003) every surface approach point of the room (the robot stands and turns there); task 003
+# fix round 2: >= 0.60 m from every spawn-surface footprint, and a surface box only within 0.24 m (box centre to edge;
+# L1's 0.30 m tightened by the pick survey) of a top edge with standable floor in front of it (generate.surface_spot_ok).
+# The hall has none (targets must be out of sight from the spawn point later).
+
+house: house116
+wall: {height: 2.0, thickness: 0.1}
+spawn: [4.5, 5.25, 0.0]  # robot spawn = hall room point, facing east
+
+rooms:
+  hall:        {rect: [3.0, 3.5, 6.0, 7.0], floor: [0.62, 0.60, 0.55]}
+  bedroom:     {rect: [0.0, 3.5, 3.0, 7.0], floor: [0.55, 0.62, 0.68]}
+  storage:     {rect: [6.0, 3.5, 9.0, 7.0], floor: [0.60, 0.58, 0.52]}
+  living_room: {rect: [0.0, 0.0, 4.5, 3.5], floor: [0.66, 0.60, 0.50]}
+  kitchen:     {rect: [4.5, 0.0, 9.0, 3.5], floor: [0.70, 0.70, 0.68]}
+
+# wall: x = const (vertical in the sketch) or y = const; center = coordinate along the wall; width 1.0 m.
+doors:
+  d_bed: {between: [hall, bedroom],     wall: {x: 3.0}, center: 5.25}
+  d_sto: {between: [hall, storage],     wall: {x: 6.0}, center: 5.25}
+  d_liv: {between: [hall, living_room], wall: {y: 3.5}, center: 3.75}
+  d_lk1: {between: [living_room, kitchen], wall: {x: 4.5}, center: 2.75}
+  d_lk2: {between: [living_room, kitchen], wall: {x: 4.5}, center: 0.75}
+door_width: 1.0
+
+# Furniture: boxes [cx, cy, sx, sy, height] (full sizes), static, on the known map.
+# kind: table (top slab + 4 legs, open underneath), solid (one block), sofa (seat + back).
+# surface: a name for a top a box may be placed on (place surfaces) or spawned on (spawn surfaces).
+furniture:
+  - {id: kitchen_table, room: kitchen,     kind: table, box: [7.55, 1.0, 1.1, 0.7, 0.75], rgb: [0.55, 0.36, 0.20], surface: kitchen table}
+  - {id: kitchen_counter, room: kitchen,   kind: solid, box: [7.95, 3.15, 1.9, 0.6, 0.90], rgb: [0.85, 0.85, 0.82]}
+  - {id: storage_bench, room: storage,     kind: table, box: [7.5, 6.7, 1.2, 0.45, 0.45], rgb: [0.45, 0.32, 0.22], surface: storage bench}
+  - {id: sofa, room: living_room,          kind: sofa,  box: [0.45, 1.75, 0.8, 1.8, 0.85], rgb: [0.25, 0.30, 0.38]}
+  - {id: coffee_table, room: living_room,  kind: table, box: [2.1, 0.75, 0.9, 0.5, 0.40], rgb: [0.50, 0.34, 0.22], surface: coffee table}
+  - {id: bed, room: bedroom,               kind: solid, box: [1.0, 6.35, 1.9, 1.2, 0.50], rgb: [0.80, 0.80, 0.86]}
+  - {id: nightstand, room: bedroom,        kind: solid, box: [2.35, 6.7, 0.45, 0.45, 0.50], rgb: [0.48, 0.34, 0.24], surface: nightstand}
+
+# Place surfaces (Phase 2+ targets). Spawn surfaces: low tops a fetch box may start on (with floor regions below).
+place_surfaces: [kitchen table, storage bench]
+spawn_surfaces: [coffee table, nightstand]
+
+# Box spawn floor regions per room [x0, y0, x1, y1]; the rules in the header cut them further (generate.spot_ok).
+spawn_regions:
+  bedroom:     [0.35, 3.85, 2.65, 6.65]
+  storage:     [6.35, 3.85, 8.65, 6.65]
+  living_room: [0.35, 0.35, 4.15, 3.15]
+  kitchen:     [4.85, 0.35, 8.65, 3.15]
+
+# Blockers: variant none | crate | cabinet. The door is chosen by seed from these lists.
+blockers:
+  crate:   {doors: [d_bed, d_sto]}
+  cabinet: {doors: [d_lk1, d_lk2]}
+
+lights:
+  - [1.5, 5.25]
+  - [4.5, 5.25]
+  - [7.5, 5.25]
+  - [2.25, 1.75]
+  - [6.75, 1.75]

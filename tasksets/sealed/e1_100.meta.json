@@ -1,0 +1,50 @@
+{
+ "file": "e1_100.jsonl",
+ "sha256": "b4d64652c978f8d4f37fc31c65ebb786b3a2d9fbaffc0aa31937e880beaea3c6",
+ "commit": "896533ce47680c7457d78f3793a2560dbe017d19",
+ "dirty": false,
+ "dry_run": false,
+ "tags": [
+  "seal-009"
+ ],
+ "gl_renderer": "NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2",
+ "mujoco": "3.17.0",
+ "dep_sha256": {
+  "sim/world/generate.py": "75b701ea5e9efbbef71a4e9c160da0ef8593768c290edf3ccec5654f369e35fe",
+  "sim/world/layout.yaml": "6d8567689e5a3b063498e6a691c51ad1108e84958f44537a6f1a3d20c6f8d153",
+  "sim/world/places.yaml": "10dbeb943dc2f9dfa6a4bc422218f6b0860452fbcd71fd64d0e991cbfa04bf3a",
+  "sim/world/house.py": "9b2f6792e3a38d1eccecce7e47a9fe90abccb162020d783d75e48b60a4c98a49",
+  "sim/world/occupancy.py": "42a778a6bfc9065391c37cb38deb11d553b6cb02fc436de55909d31ae00ade6d",
+  "sim/tasks.py": "6d0d2ec2d64c3cfeb2f54b837a484506ad4e64ff7e388b769564cecc56b60613",
+  "sim/sampler.py": "3d1a53fa624a06b29d992db27a371cc13081f177adff0fa07b36135391120c07",
+  "sim/constants.py": "a8db09ade155106e16669b022d72b96961ed719b92cedb47a863aa772fd83121",
+  "sim/grasp.py": "eea8876d8375e6bca1160d7eca8d00337ac3a64692bcdd3ca2742bf0a6c2de46",
+  "sim/body.py": "ac8542913f910fb2f55e396cfbf93e5d62c4760e950690c809b4a829fd9d2a1e",
+  "sim/robot.py": "7b05d9cc7ae6c4eac13312bfc6ec4443658afd729fa26f44317b78b3231c216b",
+  "sim/look.py": "524ca604b49c78459d15c13aa245c84d871ddc66bdd71320eeb7b2a79f2f9522",
+  "sim/photo.py": "b9227a1ef5b66feccc866cbc7b6b1727225b63cf7677c98de0da6d38c89305b2",
+  "sim/nav/astar.py": "efc882aa20f5ffec9f270673ce20de8ba565251171be3074df52c0e8a95a9470",
+  "sim/nav/follow.py": "bb0f93219e354a8e6b63c56dfa744843236126281aa1ff7113aa1687e46ea995",
+  "sim/adapter.py": "8cc8ccc1583484472d060a0b6b3706f2b7a1d89acc5c2fb8344b31d942c192c3",
+  "agent/robot_api.py": "f4259524463578ae9abf61e0ecdc6d76ef924454e6dfdfdd1ca087a9b96c0035"
+ },
+ "seed_space": [
+  160000,
+  200000
+ ],
+ "exclude": [
+  100000,
+  150000,
+  150123,
+  199999
+ ],
+ "counts": {
+  "fetch": 25,
+  "blocked": 25,
+  "push_or_detour": 25,
+  "two_box": 25
+ },
+ "e1": true,
+ "easings": false,
+ "rule": "sim.seal: per type in ['fetch', 'blocked', 'push_or_detour', 'two_box'], sim.sampler.draw_set(type, 25, 160000, stop=200000, exclude=SEALED_EXCLUDE | earlier types' seeds, sealed_draw=True, min_surface=5), easings off (set_easings(False))"
+}

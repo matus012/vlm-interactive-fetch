@@ -1,0 +1,21 @@
+# House B places (task 011), same schema and conventions as places.yaml. name = the exact string the VLM sees. kind:
+# room (room point: the robot stands and looks here) | surface (approach point in front of a place surface) | door
+# (the doorway centre; `door` = the layout_b.yaml door id; yaw faces across the door from the first room of the door's
+# `between` into the second: from the hall into the room for hall doors, from the living room into the kitchen /
+# bedroom for the living-room doors; `room` = that first room). The kitchen's two doors are told apart by side: d_hk
+# (hall) is on the kitchen's south wall, d_lk (living room) on its west wall. One room point per room (design render
+# check: every grid spawn spot >= 100 px from its room's point, no second look spot needed). pose = [x, y, yaw_deg] of
+# the robot base, world frame; each pose free in the known map inflated by ROBOT_RADIUS + 0.02.
+places:
+  - {name: hall,          kind: room,    room: hall,        pose: [5.15, 0.6, 90.0]}
+  - {name: storage,       kind: room,    room: storage,     pose: [2.6, 1.5, 0.0]}
+  - {name: living room,   kind: room,    room: living_room, pose: [2.4, 5.0, 0.0]}
+  - {name: bedroom,       kind: room,    room: bedroom,     pose: [3.6, 7.8, 0.0]}  # round 2 (row 23): east of the door axis, bed now west
+  - {name: kitchen,       kind: room,    room: kitchen,     pose: [5.9, 6.4, 0.0]}
+  - {name: kitchen table, kind: surface, room: kitchen,     pose: [6.0, 7.55, 90.0]}
+  - {name: storage bench, kind: surface, room: storage,     pose: [1.5, 1.05, -90.0]}
+  - {name: storage door,       kind: door, room: hall,        door: d_sto, pose: [4.5, 2.25, 180.0]}
+  - {name: living room door,   kind: door, room: hall,        door: d_hl,  pose: [4.5, 3.75, 180.0]}
+  - {name: kitchen south door, kind: door, room: hall,        door: d_hk,  pose: [7.25, 4.5, 90.0]}
+  - {name: kitchen west door,  kind: door, room: living_room, door: d_lk,  pose: [4.5, 5.25, 0.0]}
+  - {name: bedroom door,       kind: door, room: living_room, door: d_bed, pose: [2.9, 6.0, 90.0]}

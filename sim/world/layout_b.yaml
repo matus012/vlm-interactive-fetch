@@ -1,0 +1,96 @@
+# 116 house B (task 011, owner's extension E2). Same generator, rules, room kinds, furniture and box / crate / cabinet
+# models as house A (layout.yaml, whose header states every spawn rule; they apply here unchanged); a different floor
+# plan. Selected with NAV116_HOUSE=B (sim/world/generate.py). World frame: metres, floor top z = 0, x east, y north.
+#
+#   y 9.0 +-------------------------+-----------------+
+#         |         BEDROOM         |     KITCHEN     |
+#         |             ns  bed     |    table        |
+#         |                         |         counter |
+#   y 6.0 +---------------d_bed-----+                 |
+#         |       LIVING ROOM      d_lk               |
+#         |  sofa coffee            |                 |
+#   y 4.5 |                         +-----------d_hk--+
+#         |                        d_hl               |
+#   y 3.0 +-------------------------+      HALL       |
+#         |         STORAGE        d_sto              |
+#         |                         |                 |
+#         |    bench                |   S             |
+#   y 0.0 +-------------------------+-----------------+
+#        x 0                       4.5               8.0
+#
+# Doorways 1.0 m. West column: storage, living room, bedroom (4.5 x 3.0 each); east column: hall and kitchen
+# (3.5 x 4.5 each). The hall (entry) has three doors on its west and north walls: storage (d_sto), living room (d_hl),
+# kitchen (d_hk). Hall, living room and kitchen form a loop: the kitchen has two doors, d_hk (from the hall) and d_lk
+# (from the living room); the cabinet goes into one of them and the way round the loop is the detour (no room is cut
+# off, and no planned route crosses both cabinet doors, so the detour always runs through the other cabinet door).
+# Storage (off the hall) and bedroom (off the living room) have one door each: a crate there cuts the room off.
+# S = hall spawn = hall room point, in the hall's south-west corner: every hall door is seen at a grazing angle from
+# it (d_sto / d_hl along the west wall, d_hk at the far east end of the north wall, the kitchen counter filling that
+# view), so the spawn regions are out of sight of the four hall look photos (render check, task 011).
+# Spawn regions: rooms minus 0.35 m; the hall has none.
+
+house: house116b
+wall: {height: 2.0, thickness: 0.1}
+spawn: [5.15, 0.6, 90.0]  # robot spawn = hall room point, facing north
+
+rooms:
+  hall:        {rect: [4.5, 0.0, 8.0, 4.5], floor: [0.62, 0.60, 0.55]}
+  storage:     {rect: [0.0, 0.0, 4.5, 3.0], floor: [0.60, 0.58, 0.52]}
+  living_room: {rect: [0.0, 3.0, 4.5, 6.0], floor: [0.66, 0.60, 0.50]}
+  bedroom:     {rect: [0.0, 6.0, 4.5, 9.0], floor: [0.55, 0.62, 0.68]}
+  kitchen:     {rect: [4.5, 4.5, 8.0, 9.0], floor: [0.70, 0.70, 0.68]}
+
+# wall: x = const (vertical in the sketch) or y = const; center = coordinate along the wall; width 1.0 m.
+doors:
+  d_sto: {between: [hall, storage],        wall: {x: 4.5}, center: 2.25}
+  d_hl:  {between: [hall, living_room],    wall: {x: 4.5}, center: 3.75}
+  d_hk:  {between: [hall, kitchen],        wall: {y: 4.5}, center: 7.25}
+  d_lk:  {between: [living_room, kitchen], wall: {x: 4.5}, center: 5.25}
+  d_bed: {between: [living_room, bedroom], wall: {y: 6.0}, center: 2.9}
+door_width: 1.0
+
+# Furniture: boxes [cx, cy, sx, sy, height] (full sizes), static, on the known map. Same kinds and sizes as house A;
+# the counter and the bed are turned 90 deg (sx / sy swapped). The sofa back is on its -x side (generate._furniture).
+furniture:
+  - {id: kitchen_table, room: kitchen,     kind: table, box: [6.0, 8.25, 1.1, 0.7, 0.75], rgb: [0.55, 0.36, 0.20], surface: kitchen table}
+  # world fix round 3 (task 011, row 23): counter moved north along the east wall (was y 5.3-7.2, 0.8 m behind the
+  # hall-kitchen door): a not-movable push from the kitchen side had no room to step off (Phase 2 r2 push_then_detour 5/10)
+  - {id: kitchen_counter, room: kitchen,   kind: solid, box: [7.65, 7.45, 0.6, 1.9, 0.90], rgb: [0.85, 0.85, 0.82]}
+  - {id: storage_bench, room: storage,     kind: table, box: [1.5, 0.3, 1.2, 0.45, 0.45], rgb: [0.45, 0.32, 0.22], surface: storage bench}
+  - {id: sofa, room: living_room,          kind: sofa,  box: [0.45, 5.0, 0.8, 1.8, 0.85], rgb: [0.25, 0.30, 0.38]}
+  - {id: coffee_table, room: living_room,  kind: table, box: [1.6, 5.0, 0.5, 0.9, 0.40], rgb: [0.50, 0.34, 0.22], surface: coffee table}
+  # world fix round 2 (task 011, row 23): bed moved to the west wall, off the bedroom door's push lane (round 1: the
+  # crate pushed in from the living room got stuck on the bed, 4/4 trials in d_bed); nightstand beside its head
+  - {id: bed, room: bedroom,               kind: solid, box: [0.65, 7.9, 1.2, 1.9, 0.50], rgb: [0.80, 0.80, 0.86]}
+  - {id: nightstand, room: bedroom,        kind: solid, box: [1.55, 8.65, 0.45, 0.45, 0.50], rgb: [0.48, 0.34, 0.24], surface: nightstand}
+
+place_surfaces: [kitchen table, storage bench]
+spawn_surfaces: [coffee table, nightstand]
+# Optional key (task 011; read by sim/sampler.py): spawn surfaces a TARGET box may start on. House A: nightstand only
+# (its coffee table is in view of the hall spawn). Here both are expected out of sight from the hall spawn (design
+# render check: every grid spot on both tops < 10 px); to be measured and corrected before the freeze.
+target_spawn_surfaces: [coffee table, nightstand]
+# Optional key (task 011; read by sim/tasks.py and sim/sampler.py): push_or_detour pairing. A box in `room` goes to
+# `surface`, any other box to the other place surface; the planned route must still cross the cabinet's door. Same
+# value as house A's implied default: kitchen boxes leave the kitchen (to the storage bench), every other box is
+# carried into it (to the kitchen table).
+detour_pair: {room: kitchen, surface: storage bench}
+
+# Box spawn floor regions per room [x0, y0, x1, y1]; the rules in layout.yaml's header cut them further.
+spawn_regions:
+  storage:     [0.35, 0.35, 4.15, 2.65]
+  living_room: [0.35, 3.35, 4.15, 5.65]
+  bedroom:     [0.35, 6.35, 4.15, 8.65]
+  kitchen:     [4.85, 4.85, 7.65, 8.65]
+
+# Blockers: variant none | crate | cabinet. The door is chosen by seed from these lists.
+blockers:
+  crate:   {doors: [d_sto, d_bed]}
+  cabinet: {doors: [d_hk, d_lk]}
+
+lights:
+  - [6.25, 2.25]
+  - [2.25, 1.5]
+  - [2.25, 4.5]
+  - [2.25, 7.5]
+  - [6.25, 6.75]

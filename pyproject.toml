@@ -1,0 +1,21 @@
+[project]
+name = "interactive-nav"
+version = "0.1.0"
+description = "116: a VLM picks scripted skills for a TidyBot in a small MuJoCo house"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "mujoco==3.17.0",
+    "numpy>=2.0",
+    "pillow>=11.0",
+    "openai>=1.50",
+    "pyyaml>=6.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0", "imageio[ffmpeg]>=2.30"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.uv]
+package = false

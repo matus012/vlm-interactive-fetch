@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+# project
+/ext
+runs/
+showcase/
+*.mp4
+*.gif
+*.webm
+frames/
+runs/**/*.png
+showcase/**/*.png
+MUJOCO_LOG.TXT

@@ -1,0 +1,38 @@
+Bootstrap: docker
+From: ubuntu:24.04
+# Slim image: Ubuntu 24.04 (Python 3.12), MuJoCo 3.17.0 (= uv.lock) + numpy/Pillow/openai/pyyaml in /opt/venv,
+# ffmpeg binary, glvnd EGL/GL + NVIDIA vendor json so MuJoCo EGL works under `apptainer exec --nv`.
+# Build: hpc/build_image.sh on the cluster login node. Pins: hpc/image_requirements.txt.
+
+%files
+    image_requirements.txt /opt/nav116/image_requirements.txt
+
+%environment
+    export MUJOCO_GL=egl PYOPENGL_PLATFORM=egl PYTHONUNBUFFERED=1
+    export __EGL_VENDOR_LIBRARY_DIRS=/usr/share/glvnd/egl_vendor.d
+    export PATH=/opt/venv/bin:$PATH
+
+%post
+    set -eu
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update
+    apt-get install -y --no-install-recommends python3.12 python3.12-venv ca-certificates curl ffmpeg \
+        libegl1 libgl1 libglvnd0 libgles2 libglu1-mesa
+    rm -rf /var/lib/apt/lists/*
+    mkdir -p /usr/share/glvnd/egl_vendor.d
+    printf '{\n  "file_format_version" : "1.0.0",\n  "ICD" : { "library_path" : "libEGL_nvidia.so.0" }\n}\n' \
+        > /usr/share/glvnd/egl_vendor.d/10_nvidia.json
+    curl -LsSf https://astral.sh/uv/0.13.6/install.sh | env UV_INSTALL_DIR=/usr/local/bin UV_NO_MODIFY_PATH=1 sh
+    export UV_PYTHON_DOWNLOADS=never UV_LINK_MODE=copy UV_CACHE_DIR=/tmp/uv-cache
+    uv venv --python /usr/bin/python3.12 /opt/venv
+    VIRTUAL_ENV=/opt/venv uv pip install -r /opt/nav116/image_requirements.txt
+    rm -rf /tmp/uv-cache
+    chmod -R a+rX /opt/venv /opt/nav116
+    /opt/venv/bin/python -c "import mujoco, numpy, PIL, openai, yaml; assert mujoco.__version__=='3.17.0'; print('nav116 ok', mujoco.__version__)"
+
+%labels
+    project 116_interactive_nav
+    stack ubuntu24.04 py3.12 mujoco3.17.0 ffmpeg headless-egl
+
+%help
+    apptainer exec --nv --cleanenv nav116.sif python ...   (see hpc/IMAGE.md)

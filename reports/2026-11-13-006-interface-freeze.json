@@ -1,0 +1,21 @@
+{
+ "tag": "freeze-006",
+ "commit": "4e68c258fb278f78b83948c562c797d1b35e13dd",
+ "git_tree": "1ea4e2cbcc18a2bcaed7e8a666add598e6ff75af",
+ "interface_files": [
+  "agent/tools.py",
+  "agent/robot_api.py",
+  "agent/skills.py",
+  "agent/validate.py",
+  "agent/context.py"
+ ],
+ "interface_sha256": "806c70f4452a10ce6f1f8b2908aabf951cc5ec39c9be319c338208a1989c329e",
+ "per_file_sha256": {
+  "agent/tools.py": "2819af39c85cc29dcd2582ed121ab9f4bbcee405b4604fcc39b8a905a0a1e783",
+  "agent/robot_api.py": "f4259524463578ae9abf61e0ecdc6d76ef924454e6dfdfdd1ca087a9b96c0035",
+  "agent/skills.py": "3b1947a4feaba23d9bdaab60710771b33769db581ac873d3b620655c2652d45c",
+  "agent/validate.py": "ecc91f932770468f6e92dc4875abe2d31dc4244c73de050e3c134755a59c0cce",
+  "agent/context.py": "2406a2db687b603ac957ba044488aea7c898da173ac2dfa8940250f89aa5e739"
+ },
+ "rule": "sha256 over, in order, for each file: path + NUL + file bytes at the tag"
+}

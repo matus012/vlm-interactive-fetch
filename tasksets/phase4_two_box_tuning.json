@@ -1,0 +1,567 @@
+{
+ "name": "phase4_two_box_tuning",
+ "rule": "sim.sampler.draw_set('two_box', 20, 8600, stop=8800, min_surface=0)",
+ "draw_rule": "task 005 balanced sampler (sim/sampler.py; deviation 13: room uniform, support natural share + min_surface, surface uniform; out of sight < 10 px; deviation 15: pre-grasp check at draw)",
+ "code_commit": "f769a6ea8853b711ced22b2f0caca0f1c60c4222",
+ "renderer": "NVIDIA (laptop RTX 4060, EGL)",
+ "sha256_core": "d6bf49d5a849807e002fbf400053a5d0407f7faf1f7b7dafb96128b27bccea0d",
+ "hash_of": "sha256 of json.dumps([{task_id, seed, instruction, targets}], sort_keys=True, separators=(',',':'))",
+ "table": {
+  "room": {
+   "bedroom": 5,
+   "kitchen": 5,
+   "living_room": 5,
+   "storage": 5
+  },
+  "support": {
+   "floor": 19,
+   "nightstand": 1
+  },
+  "surface": {
+   "kitchen table": 10,
+   "storage bench": 10
+  }
+ },
+ "tasks": [
+  {
+   "task_id": "two_box-8600",
+   "type": "two_box",
+   "seed": 8600,
+   "blocker": "none",
+   "instruction": "Yellow box to the kitchen table, green box to the storage bench.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "yellow box": 0,
+    "green box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8606",
+   "type": "two_box",
+   "seed": 8606,
+   "blocker": "none",
+   "instruction": "Red box to the storage bench, green box to the kitchen table.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "green box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "red box": 0,
+    "green box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "two_box-8601",
+   "type": "two_box",
+   "seed": 8601,
+   "blocker": "none",
+   "instruction": "Green box to the kitchen table, red box to the storage bench.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "red box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "green box": 0,
+    "red box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8604",
+   "type": "two_box",
+   "seed": 8604,
+   "blocker": "none",
+   "instruction": "Red box to the kitchen table, yellow box to the storage bench.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "yellow box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "red box": 0,
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8610",
+   "type": "two_box",
+   "seed": 8610,
+   "blocker": "none",
+   "instruction": "Blue box to the kitchen table, green box to the storage bench.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "blue box": 0,
+    "green box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8611",
+   "type": "two_box",
+   "seed": 8611,
+   "blocker": "none",
+   "instruction": "Green box to the storage bench, blue box to the kitchen table.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "green box": 0,
+    "blue box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "two_box-8607",
+   "type": "two_box",
+   "seed": 8607,
+   "blocker": "none",
+   "instruction": "Yellow box to the storage bench, blue box to the kitchen table.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "yellow box": 0,
+    "blue box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "two_box-8613",
+   "type": "two_box",
+   "seed": 8613,
+   "blocker": "none",
+   "instruction": "Blue box to the storage bench, green box to the kitchen table.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "green box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "blue box": 0,
+    "green box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "two_box-8612",
+   "type": "two_box",
+   "seed": 8612,
+   "blocker": "none",
+   "instruction": "Yellow box to the storage bench, red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "yellow box": 0,
+    "red box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "two_box-8605",
+   "type": "two_box",
+   "seed": 8605,
+   "blocker": "none",
+   "instruction": "Green box to the kitchen table, red box to the storage bench.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "red box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "green box": 0,
+    "red box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8614",
+   "type": "two_box",
+   "seed": 8614,
+   "blocker": "none",
+   "instruction": "Green box to the storage bench, yellow box to the kitchen table.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "yellow box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "green box": 0,
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "two_box-8615",
+   "type": "two_box",
+   "seed": 8615,
+   "blocker": "none",
+   "instruction": "Yellow box to the kitchen table, blue box to the storage bench.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "blue box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "yellow box": 0,
+    "blue box": 8
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8620",
+   "type": "two_box",
+   "seed": 8620,
+   "blocker": "none",
+   "instruction": "Red box to the kitchen table, blue box to the storage bench.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "blue box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "red box": 0,
+    "blue box": 0
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "nightstand",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8618",
+   "type": "two_box",
+   "seed": 8618,
+   "blocker": "none",
+   "instruction": "Green box to the storage bench, blue box to the kitchen table.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "green box": 0,
+    "blue box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "two_box-8631",
+   "type": "two_box",
+   "seed": 8631,
+   "blocker": "none",
+   "instruction": "Yellow box to the storage bench, red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "yellow box": 0,
+    "red box": 0
+   },
+   "slot": {
+    "room": "kitchen",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "two_box-8622",
+   "type": "two_box",
+   "seed": 8622,
+   "blocker": "none",
+   "instruction": "Red box to the kitchen table, green box to the storage bench.",
+   "targets": [
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "red box": 0,
+    "green box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8621",
+   "type": "two_box",
+   "seed": 8621,
+   "blocker": "none",
+   "instruction": "Green box to the storage bench, red box to the kitchen table.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "red box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "green box": 0,
+    "red box": 3
+   },
+   "slot": {
+    "room": "bedroom",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  },
+  {
+   "task_id": "two_box-8623",
+   "type": "two_box",
+   "seed": 8623,
+   "blocker": "none",
+   "instruction": "Blue box to the kitchen table, yellow box to the storage bench.",
+   "targets": [
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "yellow box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "blue box": 0,
+    "yellow box": 0
+   },
+   "slot": {
+    "room": "storage",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8626",
+   "type": "two_box",
+   "seed": 8626,
+   "blocker": "none",
+   "instruction": "Green box to the kitchen table, blue box to the storage bench.",
+   "targets": [
+    {
+     "object": "green box",
+     "surface": "kitchen table"
+    },
+    {
+     "object": "blue box",
+     "surface": "storage bench"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "green box": 0,
+    "blue box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "kitchen table"
+   }
+  },
+  {
+   "task_id": "two_box-8627",
+   "type": "two_box",
+   "seed": 8627,
+   "blocker": "none",
+   "instruction": "Yellow box to the storage bench, blue box to the kitchen table.",
+   "targets": [
+    {
+     "object": "yellow box",
+     "surface": "storage bench"
+    },
+    {
+     "object": "blue box",
+     "surface": "kitchen table"
+    }
+   ],
+   "step_limit": 30,
+   "hall_px": {
+    "yellow box": 0,
+    "blue box": 0
+   },
+   "slot": {
+    "room": "living_room",
+    "support": "floor",
+    "surface": "storage bench"
+   }
+  }
+ ]
+}
